@@ -4,7 +4,7 @@ Docker for askbot supporting volume for persisted data, easily overridable setti
 - Uses a /data docker volume for settings overriding and storing a sqlite data file
 - Can easily customize install by overriding settings
 
-# Quick Start
+## Quick Start
 
 ```bash
 # Use jwilder/nginx-proxy for nginx
@@ -14,7 +14,7 @@ docker run -d -p 8080:80 --name nginx-proxy -p 4443:443 -v /var/run/docker.sock:
 docker run -e VIRTUAL_HOST=www.my-sweet-askbot-site.com -v /askbot:/data/ -d berdon/docker-askbot:latest
 ```
 
-# Customing Askbot
+## Customing Askbot
 
 Askbot relies heavily on `settings.py` for settings. You can override these settings in your /data volumes `/data/override/settingsoverride.py` file. This gets loaded at runtime and anything specified overrides the values in the default file.
 
