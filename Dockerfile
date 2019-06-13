@@ -33,6 +33,7 @@ RUN rm /app/settings-override.py
 # Copy over some runtime stuff
 COPY ./conf/uwsgi.ini /app/uwsgi.ini
 COPY ./conf/run.sh /app/post-deploy.sh
+RUN chmod +x /app/post-deploy.sh
 
 EXPOSE 80
 CMD ["/app/post-deploy.sh"]
