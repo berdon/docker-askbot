@@ -1,9 +1,8 @@
-FROM berdon/trustible
+FROM ubuntu:16.04 
 
 LABEL maintainer="Austin Hanson <berdon@gmail.com>"
 
-RUN apt-get update
-RUN apt-get -y upgrade
+RUN apt-get update && apt-get -y upgrade && apt-get install python-pip libsasl2-dev python-dev libldap2-dev libssl-dev -y
 
 VOLUME ["/data"]
 
@@ -18,7 +17,7 @@ RUN sed -i "s|^DEBUG = True|DEBUG = False|" /app/settings.py
 
 # Some garbage handling because askbot maybe doesn't pin dependency versions?
 RUN pip install -U --force-reinstall six==1.10.0
-RUN pip install uWSGI==2.0.7 wsgiref==0.1.2
+RUN pip install uWSGI==2.0.11 wsgiref==0.1.2
 
 # Necessary for the optional LDAP support (which I'm dictating as being required functionally optional)
 RUN pip install python-ldap
